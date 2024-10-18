@@ -83,15 +83,17 @@ public class Test {
 
     // Método para imprimir la lista de servicios agregados
     public static void imprimirListaServicios(Sistema sistema) {
-        List<Servicio> servicios = sistema.traerServicio(false);  // Obtener todos los servicios
-        for (Servicio s : servicios) {
-            if (s instanceof Gastronomia g) {
-                System.out.println("Gastronomia: " + g.getCodServicio() + " - " + g.gastronomia + " - Precio: " + g.precio
-                                   + " - Porcentaje Descuento: " + g.getPorcentajeDescuento() + " - En Promoción: " + g.isEnPromocion());
-            } else if (s instanceof Hospedaje h) {
-                System.out.println("Hospedaje: " + h.getCodServicio() + " - " + h.hospedaje + " - Precio por noche: " + h.precioPorNoche
-                                   + " - Porcentaje Descuento: " + h.getPorcentajeDescuento() + " - En Promoción: " + h.isEnPromocion());
-            }
+    List<Servicio> servicios = sistema.traerTodosLosServicios(); // Obtiene todos los servicios
+    for (Servicio s : servicios) {
+        if (s instanceof Gastronomia) {
+            Gastronomia g = (Gastronomia) s;
+            System.out.println("Gastronomia: " + g.getCodServicio() + " - " + g.gastronomia + " - Precio: " + g.precio
+                               + " - Porcentaje Descuento: " + g.getPorcentajeDescuento() + " - En Promocion: " + g.isEnPromocion());
+        } else if (s instanceof Hospedaje) {
+            Hospedaje h = (Hospedaje) s;
+            System.out.println("Hospedaje: " + h.getCodServicio() + " - " + h.hospedaje + " - Precio por noche: " + h.precioPorNoche
+                               + " - Porcentaje Descuento: " + h.getPorcentajeDescuento() + " - En Promocion: " + h.isEnPromocion());
         }
     }
+}
 }
