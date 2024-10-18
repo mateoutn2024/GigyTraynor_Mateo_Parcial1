@@ -3,6 +3,8 @@ package test;
 import Sistema.Sistema;
 import java.time.LocalDate;
 import java.util.List;
+import modelo.Gastronomia;
+import modelo.Hospedaje;
 import modelo.Servicio;
 
 public class Test {
@@ -56,6 +58,11 @@ public class Test {
             sistema.agregarHospedaje("489259", 10.0, true, "Habitación triple", 2200.0);
             sistema.agregarGastronomia("182835", 20.0, false, "Gaseosa", 120.0, 3);
             sistema.agregarHospedaje("758972", 15.0, false, "Habitación simple", 1000.0);
+
+            // Imprimir la lista de servicios después de agregar
+            System.out.println("\n---(3) Lista de servicios agregados ---");
+            imprimirListaServicios(sistema);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -71,6 +78,20 @@ public class Test {
         List<Servicio> enPromocionDia = sistema.traerServicio(true, fecha1);
         for (Servicio s : enPromocionDia) {
             System.out.println(s.getCodServicio());
+        }
+    }
+
+    // Método para imprimir la lista de servicios agregados
+    public static void imprimirListaServicios(Sistema sistema) {
+        List<Servicio> servicios = sistema.traerServicio(false);  // Obtener todos los servicios
+        for (Servicio s : servicios) {
+            if (s instanceof Gastronomia g) {
+                System.out.println("Gastronomia: " + g.getCodServicio() + " - " + g.gastronomia + " - Precio: " + g.precio
+                                   + " - Porcentaje Descuento: " + g.getPorcentajeDescuento() + " - En Promoción: " + g.isEnPromocion());
+            } else if (s instanceof Hospedaje h) {
+                System.out.println("Hospedaje: " + h.getCodServicio() + " - " + h.hospedaje + " - Precio por noche: " + h.precioPorNoche
+                                   + " - Porcentaje Descuento: " + h.getPorcentajeDescuento() + " - En Promoción: " + h.isEnPromocion());
+            }
         }
     }
 }

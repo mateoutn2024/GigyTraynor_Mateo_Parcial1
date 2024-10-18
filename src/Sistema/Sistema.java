@@ -43,7 +43,8 @@ public class Sistema {
         if (traerServicio(codServicio) != null) {
             throw new Exception("El servicio con este código ya existe.");
         }
-        lstServicio.add(new Gastronomia(codServicio, porcentajeDescuento, enPromocion, gastronomia, precio, diaSemDesc));
+        Gastronomia nuevoServicio = new Gastronomia(codServicio, porcentajeDescuento, enPromocion, gastronomia, precio, diaSemDesc);
+        lstServicio.add(nuevoServicio); // Agrega el nuevo servicio a la lista
         return true;
     }
 
@@ -51,7 +52,8 @@ public class Sistema {
         if (traerServicio(codServicio) != null) {
             throw new Exception("El servicio con este código ya existe.");
         }
-        lstServicio.add(new Hospedaje(codServicio, porcentajeDescuento, enPromocion, hospedaje, precioPorNoche));
+        Hospedaje nuevoServicio = new Hospedaje(codServicio, porcentajeDescuento, enPromocion, hospedaje, precioPorNoche);
+        lstServicio.add(nuevoServicio); // Agrega el nuevo servicio a la lista
         return true;
     }
 }

@@ -3,8 +3,8 @@ package modelo;
 import java.time.LocalDate;
 
 public class Hospedaje extends Servicio {
-    private final String hospedaje;
-    private final double precioPorNoche;
+    public final String hospedaje;
+    public final double precioPorNoche;
 
     public Hospedaje(String codServicio, double porcentajeDescuento, boolean enPromocion, String hospedaje, double precioPorNoche) throws Exception {
         super(codServicio, porcentajeDescuento, enPromocion);

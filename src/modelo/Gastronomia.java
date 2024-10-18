@@ -3,8 +3,8 @@ package modelo;
 import java.time.LocalDate;
 
 public class Gastronomia extends Servicio {
-    private final String gastronomia;
-    private final double precio;
+    public final String gastronomia;
+    public final double precio;
     private final int diaSemDesc;
 
     public Gastronomia(String codServicio, double porcentajeDescuento, boolean enPromocion, String gastronomia, double precio, int diaSemDesc) throws Exception {
@@ -20,6 +20,6 @@ public class Gastronomia extends Servicio {
         if (isEnPromocion() && dia.getDayOfWeek().getValue() == diaSemDesc) {
             return precio * (1 - getPorcentajeDescuento() / 100);
         }
-        return precio;
+        return precio; // Retorna el precio completo si no hay descuento
     }
 }
