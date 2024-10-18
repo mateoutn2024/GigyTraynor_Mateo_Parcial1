@@ -68,16 +68,30 @@ public class Test {
         }
 
         // Test de consulta
-        System.out.println("4-1) Traer todos los servicios en promocion:");
+        System.out.println("\n4-1) Traer todos los servicios en promoción:");
         List<Servicio> enPromocion = sistema.traerServicio(true);
         for (Servicio s : enPromocion) {
-            System.out.println(s.getCodServicio());
-        }
+            if (s instanceof Gastronomia g) {
+                System.out.println("Gastronomia: " + g.getCodServicio() + " - " + g.gastronomia + " - Precio: " + g.precio
+                                   + " - Porcentaje Descuento: " + g.getPorcentajeDescuento() + " - En Promoción: " + g.isEnPromocion());
+            } else if (s instanceof Hospedaje h) {
+                System.out.println("Hospedaje: " + h.getCodServicio() + " - " + h.hospedaje + " - Precio por noche: " + h.precioPorNoche
+                                   + " - Porcentaje Descuento: " + h.getPorcentajeDescuento() + " - En Promoción: " + h.isEnPromocion());
+            }
+}
 
-        System.out.println("4-2) Traer todos los servicios del dia 2020-10-28 y en promocion:");
+        System.out.println("4-2) Traer todos los servicios del día 2020-10-28 y en promoción:");
         List<Servicio> enPromocionDia = sistema.traerServicio(true, fecha1);
         for (Servicio s : enPromocionDia) {
-            System.out.println(s.getCodServicio());
+            if (s instanceof Gastronomia) {
+                Gastronomia g = (Gastronomia) s;
+                System.out.println("Gastronomia: " + g.getCodServicio() + " - " + g.gastronomia + " - Precio: " + g.precio
+                                   + " - Porcentaje Descuento: " + g.getPorcentajeDescuento() + " - En Promoción: " + g.isEnPromocion());
+            } else if (s instanceof Hospedaje) {
+                Hospedaje h = (Hospedaje) s;
+                System.out.println("Hospedaje: " + h.getCodServicio() + " - " + h.hospedaje + " - Precio por noche: " + h.precioPorNoche
+                                   + " - Porcentaje Descuento: " + h.getPorcentajeDescuento() + " - En Promoción: " + h.isEnPromocion());
+            }
         }
     }
 
