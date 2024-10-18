@@ -38,7 +38,11 @@ public class Sistema {
         }
         return resultado;
     }
-
+    
+    public List<Servicio> traerTodosLosServicios() {
+        return lstServicio; // Método para obtener todos los servicios sin filtrado
+    }
+    
     public boolean agregarGastronomia(String codServicio, double porcentajeDescuento, boolean enPromocion, String gastronomia, double precio, int diaSemDesc) throws Exception {
         if (traerServicio(codServicio) != null) {
             throw new Exception("El servicio con este código ya existe.");
